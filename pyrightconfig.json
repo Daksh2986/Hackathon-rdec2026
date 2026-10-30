@@ -1,0 +1,12 @@
+{
+  "include": [
+    "src",
+    "tests",
+    "evaluation"
+  ],
+  "extraPaths": [
+    "src"
+  ],
+  "pythonVersion": "3.11",
+  "typeCheckingMode": "standard"
+}

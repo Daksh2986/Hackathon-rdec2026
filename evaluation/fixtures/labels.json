@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "file": "vulnerable_shell.py",
+      "label": "vulnerable",
+      "expected": [
+        {
+          "rule_id": "PY-SHELL-001",
+          "sink_line": 6
+        }
+      ]
+    },
+    {
+      "file": "vulnerable_eval.py",
+      "label": "vulnerable",
+      "expected": [
+        {
+          "rule_id": "PY-EVAL-001",
+          "sink_line": 2
+        }
+      ]
+    },
+    {
+      "file": "safe_shell.py",
+      "label": "safe",
+      "expected": []
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "PS05: Audit a repository",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "repo_auditor",
+      "args": [
+        "audit",
+        "${input:ps05TargetPath}",
+        "--output",
+        "${input:ps05OutputPath}"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "PS05: Web interface",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "repo_auditor",
+      "args": [
+        "web"
+      ],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "ps05TargetPath",
+      "type": "promptString",
+      "description": "Path to the repository to audit",
+      "default": "${workspaceFolder}"
+    },
+    {
+      "id": "ps05OutputPath",
+      "type": "promptString",
+      "description": "Report output folder (keep it outside the target repository)",
+      "default": "${workspaceFolder}\\..\\ps05-audit-output"
+    }
+  ]
+}

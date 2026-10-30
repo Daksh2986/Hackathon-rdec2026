@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ps05:report-schema:1.0",
+  "title": "PS05 Repository Audit Report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "tool_version",
+    "run_id",
+    "target",
+    "revision",
+    "created_at",
+    "status",
+    "findings",
+    "analyzers",
+    "warnings",
+    "summary",
+    "graph_nodes",
+    "graph_edges"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "tool_version": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "target": {
+      "type": "string"
+    },
+    "revision": {
+      "type": ["string", "null"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": ["complete", "partial"]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "analyzers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "status", "message", "analyzed"],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "enum": ["complete", "incomplete", "skipped"]
+          },
+          "message": {
+            "type": "string"
+          },
+          "analyzed": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "graph_nodes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/graphNode"
+      }
+    },
+    "graph_edges": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/graphEdge"
+      }
+    }
+  },
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "required": [
+        "id",
+        "rule_id",
+        "category",
+        "title",
+        "description",
+        "severity",
+        "status",
+        "confidence",
+        "locations",
+        "evidence",
+        "remediation",
+        "references",
+        "dependency"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "rule_id": {
+          "type": "string"
+        },
+        "category": {
+          "enum": ["dependency", "data_flow"]
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "severity": {
+          "enum": ["critical", "high", "medium", "low", "unknown"]
+        },
+        "status": {
+          "enum": ["confirmed", "suspected", "needs_review"]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "line", "role"],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "line": {
+                "type": ["integer", "null"],
+                "minimum": 1
+              },
+              "role": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remediation": {
+          "type": "string"
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "dependency": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "required": [
+                "ecosystem",
+                "name",
+                "version",
+                "direct",
+                "manifest",
+                "locator",
+                "fixed_versions",
+                "advisory_id"
+              ],
+              "properties": {
+                "ecosystem": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "direct": {
+                  "type": ["boolean", "null"]
+                },
+                "manifest": {
+                  "type": "string"
+                },
+                "locator": {
+                  "type": "string"
+                },
+                "fixed_versions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "advisory_id": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "graphNode": {
+      "type": "object",
+      "required": ["id", "kind", "label", "attributes"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "attributes": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "graphEdge": {
+      "type": "object",
+      "required": ["source", "target", "kind", "path", "line"],
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "path": {
+          "type": ["string", "null"]
+        },
+        "line": {
+          "type": ["integer", "null"],
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
