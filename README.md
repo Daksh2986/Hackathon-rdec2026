@@ -13,7 +13,11 @@ This checkout is focused on PS05: the Automated Multi-Agent Codebase Vulnerabili
 ## Selected problem statement
 
 PS05 is the selected challenge. Its authoritative specification is [`PS05.md`](./PS05.md).
+<<<<<<< HEAD
 See [`PROJECT_PLAN.md`](./PROJECT_PLAN.md) for the project description, proposed architecture, component breakdown, implementation sequence, and evaluation plan.
+=======
+See [`docs/PROJECT_PLAN.md`](./docs/PROJECT_PLAN.md) for the project description, proposed architecture, component breakdown, implementation sequence, and evaluation plan.
+>>>>>>> 8361c369d359d5076a5c763d73c288ddb06b0aab
 The runnable MVP is implemented in `src/repo_auditor/`; its actual supported checks and limitations are listed below.
 
 ## Problem statement
@@ -25,7 +29,11 @@ The runnable MVP is implemented in `src/repo_auditor/`; its actual supported che
 ## Getting started
 
 1. Read [`PS05.md`](./PS05.md) for the challenge requirements.
+<<<<<<< HEAD
 2. Use [`PROJECT_PLAN.md`](./PROJECT_PLAN.md) as an implementation blueprint, adapting its recommendations to the team and hackathon constraints.
+=======
+2. Use [`docs/PROJECT_PLAN.md`](./docs/PROJECT_PLAN.md) as an implementation blueprint, adapting its recommendations to the team and hackathon constraints.
+>>>>>>> 8361c369d359d5076a5c763d73c288ddb06b0aab
 3. Follow PS05's setup, implementation, testing, and submission requirements.
 4. Keep changes and evaluation focused on PS05.
 
@@ -38,9 +46,16 @@ The other problem-statement files have been removed from this checkout. Restore 
 ├── AGENTS.md
 ├── agent_trace_instructions.md
 ├── CLAUDE.md
+<<<<<<< HEAD
 ├── PROJECT_PLAN.md
 ├── README.md
 ├── PS05.md
+=======
+├── README.md
+├── PS05.md
+├── docs/
+│   └── PROJECT_PLAN.md
+>>>>>>> 8361c369d359d5076a5c763d73c288ddb06b0aab
 ├── evaluation/
 │   ├── fixtures/
 │   └── run_evaluation.py
@@ -52,6 +67,7 @@ The other problem-statement files have been removed from this checkout. Restore 
 ├── src/
 │   └── repo_auditor/
 │       └── web/       # Local browser UI
+<<<<<<< HEAD
 ├── tests/
 └── .vscode/
 ```
@@ -60,6 +76,18 @@ The other problem-statement files have been removed from this checkout. Restore 
 
 - **`AGENTS.md`** — coding-agent guidance for the challenge workflow and evaluation safeguards.
 - **`agent_trace_instructions.md`** — guidance for collecting, reviewing, redacting, and packaging agent traces. Follow PS05's submission instructions if they specify a different trace artifact or archive layout.
+=======
+├── tests/             # Unit and integration tests
+└── .vscode/           # VS Code tasks and launch profiles
+```
+
+### Project files
+
+- **`AGENTS.md`** — coding-agent guidance for the challenge workflow and evaluation safeguards.
+- **`agent_trace_instructions.md`** — guidance for collecting, reviewing, redacting, and packaging agent traces. Follow PS05's submission instructions if they specify a different trace artifact or archive layout.
+- **`CLAUDE.md`** — compatibility pointer to the shared `AGENTS.md` instructions.
+- **`docs/PROJECT_PLAN.md`** — architecture, implementation status, component breakdown, and evaluation plan.
+>>>>>>> 8361c369d359d5076a5c763d73c288ddb06b0aab
 
 ## Implemented MVP
 
