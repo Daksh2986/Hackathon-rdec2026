@@ -1,9 +1,9 @@
 # Repository Security Audit
 
-- **Run ID:** `f50a3b65-fe27-4f92-b497-50224335be20`
+- **Run ID:** `f86a8f71-9d43-44ed-ae0b-f30f0d0c1dae`
 - **Target:** `C:\\project2\\Hackathon-rdec2026\\achithon-2026-syntaxis`
-- **Revision:** `d3bbe9b18f8648e40beb55c96d7ae55cb222e636`
-- **Created:** `2026-10-30T17:42:43.770372+00:00`
+- **Revision:** `a066d4a884f781123eaf661df9ec35750f9059b8`
+- **Created:** `2026-10-31T09:20:59.533953+00:00`
 - **Run status:** **COMPLETE**
 
 ## Summary
@@ -11,7 +11,7 @@
 | Metric | Count |
 |---|---:|
 | Files Discovered | 47 |
-| Files Excluded | 7 |
+| Files Excluded | 6 |
 | Python Files Discovered | 24 |
 | Python Files Analyzed | 24 |
 | Manifests Discovered | 1 |
@@ -29,7 +29,7 @@
 
 ## Analyzer status
 
-- **repository\_inventory — COMPLETE:** Inventoried 47 file(s), excluding 7 by configured rules or limits.
+- **repository\_inventory — COMPLETE:** Inventoried 47 file(s), excluding 6 by configured rules or limits.
 - **dependency\_inventory — COMPLETE:** Parsed 1 supported manifest(s) and identified 0 resolved package version(s).
 - **python\_ast\_and\_taint — COMPLETE:** Parsed 24 Python file(s); 0 file(s) could not be parsed. 0 file(s) reached analysis limits. Analysis includes bounded same-file direct-call summaries and is limited to documented source/sink patterns.
 - **osv\_advisories — COMPLETE:** No resolved package versions were available for advisory checks.

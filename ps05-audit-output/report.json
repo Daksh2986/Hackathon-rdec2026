@@ -1,7 +1,7 @@
 {
   "target": "C:\\project2\\Hackathon-rdec2026\\achithon-2026-syntaxis",
-  "revision": "d3bbe9b18f8648e40beb55c96d7ae55cb222e636",
-  "created_at": "2026-10-30T17:42:43.770372+00:00",
+  "revision": "a066d4a884f781123eaf661df9ec35750f9059b8",
+  "created_at": "2026-10-31T09:20:59.533953+00:00",
   "status": "complete",
   "findings": [
     {
@@ -69,7 +69,7 @@
     {
       "name": "repository_inventory",
       "status": "complete",
-      "message": "Inventoried 47 file(s), excluding 7 by configured rules or limits.",
+      "message": "Inventoried 47 file(s), excluding 6 by configured rules or limits.",
       "analyzed": 47
     },
     {
@@ -94,7 +94,7 @@
   "warnings": [],
   "summary": {
     "files_discovered": 47,
-    "files_excluded": 7,
+    "files_excluded": 6,
     "python_files_discovered": 24,
     "python_files_analyzed": 24,
     "manifests_discovered": 1,
@@ -15775,7 +15775,7 @@
       "line": 130
     }
   ],
-  "run_id": "f50a3b65-fe27-4f92-b497-50224335be20",
+  "run_id": "f86a8f71-9d43-44ed-ae0b-f30f0d0c1dae",
   "schema_version": "1.0",
   "tool_version": "0.1.0"
 }

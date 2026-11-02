@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#15231f">
+    <meta name="description" content="Run a private, local security audit of a code repository.">
+    <title>Sentinel — Repository Auditor</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Sentinel home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 3 19 6v5c0 4.7-2.8 8-7 10-4.2-2-7-5.3-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="brand-copy"><strong>sentinel</strong><small>REPOSITORY SECURITY</small></span>
+        </a>
+
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="side-nav" aria-label="Workspace">
+          <a class="nav-item active" href="#scan-section"><span class="nav-icon">⌕</span> New audit <span class="nav-arrow">↗</span></a>
+          <a class="nav-item" href="#results-title"><span class="nav-icon">▤</span> Latest report</a>
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+        <div class="privacy-card">
+          <span class="privacy-icon" aria-hidden="true">✓</span>
+          <strong>Your code stays local</strong>
+          <p>Source files are never uploaded. Only dependency coordinates are sent to OSV for online checks.</p>
+        </div>
+        <div class="sidebar-footer"><span class="live-dot"></span> LOCAL ENGINE <span class="version-label">PS05 · MVP</span></div>
+      </aside>
+
+      <main class="main-content">
+        <header class="workspace-header">
+          <div class="breadcrumbs"><span>Workspace</span><span class="crumb-separator">/</span><strong>Security overview</strong></div>
+          <div class="header-status"><span class="live-dot"></span> Running on this device</div>
+        </header>
+
+        <div class="content-wrap">
+          <section class="welcome-row">
+            <div>
+              <p class="eyebrow"><span class="eyebrow-line"></span> CODEBASE INTELLIGENCE</p>
+              <h1>Security, in <span>context.</span></h1>
+              <p class="hero-copy">Find dependency risks and suspicious Python data flows, with evidence you can inspect.</p>
+            </div>
+            <div class="welcome-art" aria-hidden="true">
+              <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+              <div class="art-shield"><svg viewBox="0 0 64 64" fill="none"><path d="M32 7 51 15v14c0 13-7.5 22-19 28C20.5 51 13 42 13 29V15l19-8Z" stroke="currentColor" stroke-width="2"/><path d="m23 32 6 6 13-14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span class="art-spark spark-one">✳</span><span class="art-spark spark-two">✳</span>
+            </div>
+          </section>
+
+          <section class="quick-stats" aria-label="Audit capabilities">
+            <div class="quick-stat"><span class="stat-icon mint">⌘</span><span><strong>Python</strong><small>Source analysis</small></span></div>
+            <div class="quick-stat"><span class="stat-icon peach">◇</span><span><strong>OSV</strong><small>Dependency advisories</small></span></div>
+            <div class="quick-stat"><span class="stat-icon blue">▱</span><span><strong>Evidence-led</strong><small>Findings you can verify</small></span></div>
+          </section>
+
+          <div class="workspace-grid">
+            <section id="scan-section" class="panel scan-panel" aria-labelledby="scan-title">
+              <div class="section-heading">
+                <div class="heading-copy">
+                  <span class="section-index">01</span>
+                  <div><p class="eyebrow">START HERE</p><h2 id="scan-title">Create a security audit</h2></div>
+                </div>
+                <span class="ready-indicator"><span class="live-dot"></span> Ready</span>
+              </div>
+              <form id="audit-form">
+                <label for="target">Repository location</label>
+                <div class="input-shell"><span class="input-prefix" aria-hidden="true">⌘</span><input id="target" name="target" type="text" placeholder="C:\Users\you\source\my-project" autocomplete="off" required></div>
+                <p class="field-help">Paste the full path to a local project folder.</p>
+
+                <label for="output">Save reports to</label>
+                <div class="input-shell"><span class="input-prefix folder-icon" aria-hidden="true">▰</span><input id="output" name="output" type="text" placeholder="C:\Users\you\ps05-audit-output" autocomplete="off" required></div>
+                <p class="field-help">Use a separate folder outside the repository.</p>
+
+                <label class="check-row" for="offline">
+                  <input id="offline" name="offline" type="checkbox">
+                  <span><strong>Work offline</strong><small>Use cached advisories only. Missing or stale results are called out in coverage.</small></span>
+                </label>
+
+                <div class="privacy-note"><span class="privacy-note-icon" aria-hidden="true">i</span><p><strong>Private by design</strong><br>Repository files stay on your machine. Online checks send package names and versions to OSV.</p></div>
+                <button id="submit-button" class="primary-button" type="submit"><span class="button-label">Start security audit</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+                <p id="form-error" class="error-message" role="alert" hidden></p>
+              </form>
+            </section>
+
+            <aside class="side-column">
+              <section class="panel scope-panel">
+                <div class="small-panel-heading"><span class="scope-symbol">◎</span><h2>What gets checked</h2></div>
+                <ul class="scope-list">
+                  <li><span class="scope-check">✓</span><span><strong>Known dependency risks</strong><small>Exact versions matched against OSV advisories.</small></span></li>
+                  <li><span class="scope-check">✓</span><span><strong>Python source patterns</strong><small>Selected input-to-sink paths with code locations.</small></span></li>
+                  <li><span class="scope-check">✓</span><span><strong>Repository structure</strong><small>Imports, calls, packages, and dependency edges.</small></span></li>
+                </ul>
+                <div class="scope-footnote">Analysis is static and read-only. A clean report is not a security guarantee.</div>
+              </section>
+              <section class="tip-panel">
+                <span class="tip-icon" aria-hidden="true">✳</span>
+                <div><strong>Good to know</strong><p>Large repositories may take longer. The audit runs in the background while this page stays responsive.</p></div>
+              </section>
+            </aside>
+          </div>
+
+          <section id="audit-section" class="panel results-panel" aria-labelledby="results-title" hidden>
+            <div class="section-heading">
+              <div class="heading-copy"><span class="section-index">02</span><div><p class="eyebrow">AUDIT RESULTS</p><h2 id="results-title">Security overview</h2></div></div>
+              <span id="status-badge" class="status-badge">Queued</span>
+            </div>
+            <p id="audit-message" class="audit-message" aria-live="polite"></p>
+            <div id="progress-state" class="progress-state"><span class="progress-spinner" aria-hidden="true"></span><span id="progress-label">Preparing the audit…</span></div>
+            <div id="summary-grid" class="summary-grid"></div>
+            <div id="report-links" class="report-links" hidden></div>
+            <div id="analyzer-section" class="subsection" hidden><h3>Analysis coverage</h3><div id="analyzer-list" class="coverage-list"></div></div>
+            <div id="warning-section" class="subsection" hidden><h3>Coverage notes</h3><ul id="warning-list" class="warning-list"></ul></div>
+            <div id="finding-section" class="subsection" hidden>
+              <div class="findings-heading"><div><p class="eyebrow">PRIORITIZED RESULTS</p><h3>Findings</h3></div><span id="finding-count"></span></div>
+              <div class="finding-toolbar"><label class="search-shell" for="finding-search"><span aria-hidden="true">⌕</span><input id="finding-search" type="search" placeholder="Filter findings…" autocomplete="off"></label><span id="finding-filter-count" class="filter-count"></span></div>
+              <p id="truncation-note" class="truncation-note" hidden></p>
+              <div id="finding-list" class="finding-list"></div>
+              <p id="empty-findings" class="empty-findings" hidden>No findings match this filter.</p>
+            </div>
+          </section>
+
+          <footer><span>Sentinel · PS05 Repository Auditor</span><span>Static analysis <i></i> Read-only <i></i> Local interface</span></footer>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
